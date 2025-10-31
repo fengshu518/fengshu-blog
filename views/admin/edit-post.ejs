@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编辑文章 - 峰叔靠谱博客</title>
+    <link rel="stylesheet" href="/css/admin/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>峰叔靠谱博客管理系统</h1>
+            <nav>
+                <ul>
+                    <li><a href="/admin">仪表板</a></li>
+                    <li><a href="/admin/posts">文章管理</a></li>
+                    <li><a href="/admin/posts/new">新建文章</a></li>
+                    <li><a href="/admin/logout">退出登录</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="post-editor">
+            <div class="page-header">
+                <h2>编辑文章</h2>
+                <a href="/admin/posts" class="btn-secondary">返回文章列表</a>
+            </div>
+            
+            <form action="/admin/posts/edit/<%= post._id %>" method="POST" class="post-form">
+                <div class="form-group">
+                    <label for="title">标题</label>
+                    <input type="text" id="title" name="title" value="<%= post.title %>" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="excerpt">摘要</label>
+                    <input type="text" id="excerpt" name="excerpt" value="<%= post.excerpt || '' %>">
+                </div>
+                
+                <div class="form-group">
+                    <label for="content">内容</label>
+                    <textarea id="content" name="content" rows="15" required><%= post.content %></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">更新文章</button>
+                    <form action="/admin/posts/delete/<%= post._id %>" method="POST" style="display: inline;">
+                        <button type="submit" class="btn-danger" onclick="return confirm('确定要删除这篇文章吗？')">删除文章</button>
+                    </form>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 峰叔靠谱博客. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

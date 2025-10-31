@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= post.title %> - 峰叔靠谱博客</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>峰叔靠谱</h1>
+            <p>分享技术心得与生活感悟</p>
+            <nav>
+                <ul>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/about">关于</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <article class="post">
+            <h1><%= post.title %></h1>
+            <div class="post-meta">
+                <span class="author">作者：<%= post.author %></span>
+                <span class="date">发布日期：<%= post.date %></span>
+            </div>
+            <div class="tags">
+                <% post.tags.forEach(tag => { %>
+                <span class="tag"><%= tag %></span>
+                <% }); %>
+            </div>
+            <div class="post-content">
+                <%- post.content %>
+            </div>
+        </article>
+        
+        <div class="post-navigation">
+            <a href="/" class="back-to-home">← 返回首页</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 峰叔靠谱博客. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

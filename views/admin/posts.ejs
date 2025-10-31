@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章管理 - 峰叔靠谱博客</title>
+    <link rel="stylesheet" href="/css/admin/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>峰叔靠谱博客管理系统</h1>
+            <nav>
+                <ul>
+                    <li><a href="/admin">仪表板</a></li>
+                    <li><a href="/admin/posts">文章管理</a></li>
+                    <li><a href="/admin/posts/new">新建文章</a></li>
+                    <li><a href="/admin/logout">退出登录</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="posts-management">
+            <div class="page-header">
+                <h2>文章管理</h2>
+                <a href="/admin/posts/new" class="btn-primary">新建文章</a>
+            </div>
+            
+            <div class="posts-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>标题</th>
+                            <th>作者</th>
+                            <th>发布日期</th>
+                            <th>标签</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (typeof posts !== 'undefined' && posts.length > 0) { %>
+                            <% posts.forEach(post => { %>
+                                <tr>
+                                    <td><%= post._id %></td>
+                                    <td><%= post.title %></td>
+                                    <td>峰叔</td>
+                                    <td><%= post.date ? post.date.toISOString().split('T')[0] : '未知' %></td>
+                                    <td><!-- 标签功能待实现 --></td>
+                                    <td>
+                                        <a href="/admin/posts/edit/<%= post._id %>" class="btn-edit">编辑</a>
+                                        <form action="/admin/posts/delete/<%= post._id %>" method="POST" style="display: inline;">
+                                            <button type="submit" class="btn-delete" onclick="return confirm('确定要删除这篇文章吗？')">删除</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <% }); %>
+                        <% } else { %>
+                            <tr>
+                                <td colspan="6" style="text-align: center;">暂无文章</td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 峰叔靠谱博客. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
