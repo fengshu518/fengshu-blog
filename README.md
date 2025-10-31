@@ -158,7 +158,57 @@ npm run start:domain
 
 ## 部署
 
-项目支持多种部署方式，包括Railway、Heroku等平台。
+项目支持多种部署方式，包括GitHub Pages、Railway、Heroku等平台。
+
+### GitHub Pages部署（静态网站）
+
+本项目支持将博客转换为静态网站并部署到GitHub Pages，适合不需要动态功能的场景。
+
+#### 自动部署（推荐）
+
+1. 确保您的仓库已启用GitHub Actions（默认已启用）
+2. 推送代码到main分支，GitHub Actions会自动构建并部署静态网站
+3. 在仓库设置中启用GitHub Pages：
+   - 进入仓库的Settings页面
+   - 点击左侧的Pages选项
+   - 在"Build and deployment"部分，选择"GitHub Actions"作为源
+   - 保存设置
+
+#### 手动部署
+
+如果您想手动部署静态网站，可以按照以下步骤操作：
+
+1. 生成静态网站文件：
+   ```bash
+   npm run build:static
+   ```
+
+2. 提交生成的文件到docs目录：
+   ```bash
+   git add docs
+   git commit -m "Update static site"
+   git push origin main
+   ```
+
+3. 在仓库设置中启用GitHub Pages：
+   - 进入仓库的Settings页面
+   - 点击左侧的Pages选项
+   - 在"Build and deployment"部分，选择"Deploy from a branch"
+   - 在"Branch"下拉菜单中选择main分支，docs文件夹
+   - 保存设置
+
+#### 自定义域名配置
+
+要在GitHub Pages上使用自定义域名：
+
+1. 在仓库根目录和docs目录中都放置CNAME文件，内容为您的域名（例如：blog.yourdomain.com）
+2. 在您的域名提供商处添加DNS记录：
+   - 添加CNAME记录指向：`<username>.github.io`
+   - 或添加A记录指向GitHub Pages的IP地址：
+     - 185.199.108.153
+     - 185.199.109.153
+     - 185.199.110.153
+     - 185.199.111.153
 
 ### Railway部署
 
@@ -179,7 +229,7 @@ npm run start:domain
 
 ```bash
 # 使用自定义主机地址启动（适用于局域网访问）
-pm run start:host
+npm run start:host
 
 # 使用自定义主机地址和HTTPS启动
 npm run start:domain
