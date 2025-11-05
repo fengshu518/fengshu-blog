@@ -188,12 +188,12 @@
             margin-bottom: 2rem;
             position: relative;
             width: 100%;
-            max-width: 500px;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        .bio-slider {
+        .bio-scroll-wrapper {
             position: relative;
             height: 50px;
             overflow: hidden;
@@ -201,54 +201,61 @@
             border-radius: 25px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .bio-slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
             display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 0 2rem;
+        }
+
+        .bio-scroll-content {
+            display: none;
+            padding: 0 1rem;
+            white-space: nowrap;
             font-size: 0.95rem;
             color: var(--text-color);
             line-height: 1.4;
+            animation: scrollLeft 15s linear infinite;
+            will-change: transform;
+        }
+
+        .bio-scroll-content:hover {
+            animation-play-state: paused;
+        }
+
+        .bio-desktop-content {
+            display: none;
             text-align: center;
-            opacity: 0;
-            transform: translateX(100%);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .bio-slide.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .bio-slide.prev {
-            transform: translateX(-100%);
-        }
-
-        .bio-dots {
-            display: flex;
+            padding: 0 1.5rem;
+            height: 50px;
+            align-items: center;
             justify-content: center;
-            gap: 8px;
-            margin-top: 12px;
+            flex-direction: column;
+            justify-content: space-around;
         }
 
-        .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .bio-line {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            line-height: 1.3;
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
         }
 
-        .dot.active {
-            background: var(--primary-color);
-            transform: scale(1.2);
-            box-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
+        @keyframes scrollLeft {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* 手机端：显示滚动文字 */
+        @media (max-width: 768px) {
+            .bio-scroll-content.bio-mobile {
+                display: inline-block;
+            }
         }
 
         /* 电脑端：显示完整两行文字 */
@@ -257,26 +264,25 @@
                 max-width: 600px;
             }
 
-            .bio-slider {
-                height: 80px;
-                flex-direction: column;
-                justify-content: space-around;
-                padding: 1rem 0;
+            .bio-scroll-wrapper {
+                height: 50px;
                 background: rgba(255, 255, 255, 0.05);
                 border: 1px solid rgba(255, 255, 255, 0.1);
+                padding: 0;
+                overflow: hidden;
             }
 
-            .bio-slide {
-                position: static;
-                padding: 0 1rem;
-                opacity: 1;
-                transform: none;
-                transition: none;
-                text-align: center;
+            .bio-desktop-content {
+                display: flex;
             }
 
-            .bio-dots {
+            .bio-scroll-content.bio-mobile {
                 display: none;
+            }
+
+            .bio-line {
+                font-size: 0.85rem;
+                line-height: 1.2;
             }
         }
 
@@ -685,10 +691,42 @@
         }
 
         .music-toggle.playing {
-            background: rgba(59, 130, 246, 0.2);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            color: rgba(59, 130, 246, 0.8);
+            background: rgba(59, 130, 246, 0.3);
+            border: 1px solid rgba(59, 130, 246, 0.5);
+            color: rgba(59, 130, 246, 1);
             animation: subtlePulse 3s ease-in-out infinite;
+        }
+
+        /* 播放提示 */
+        .music-player::after {
+            content: '点击播放';
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.6);
+            background: rgba(0, 0, 0, 0.7);
+            padding: 2px 8px;
+            border-radius: 10px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .music-player:hover::after {
+            opacity: 1;
+        }
+
+        .music-toggle.playing + .music-player::after,
+        .music-player.playing::after {
+            content: '点击暂停';
+            opacity: 0;
+        }
+
+        .music-player.playing:hover::after {
+            opacity: 1;
         }
 
         .music-player:hover .music-toggle.playing {
@@ -860,17 +898,18 @@
                 <h1>上海1943</h1>
                 <p class="subtitle">峰叔 | 资深互联网创业导师</p>
                 <div class="bio-container">
-                    <div class="bio-slider">
-                        <div class="bio-slide">
-                            十三年网创经验，专注电商CPS推广，擅长社群营销，流量挖掘，项目指导
+                    <div class="bio-scroll-wrapper">
+                        <div class="bio-scroll-content bio-mobile">
+                            十三年网创经验，专注电商CPS推广，淘客百万团队长，社群营销，流量挖掘，项目指导，电商短视频工具服务商 · 十三年网创经验，专注电商CPS推广，淘客百万团队长，社群营销，流量挖掘，项目指导，电商短视频工具服务商
                         </div>
-                        <div class="bio-slide">
-                            淘客百万团队长，短视频、直播、电商工具以及周边服务商
+                        <div class="bio-desktop-content">
+                            <div class="bio-line">
+                                十三年网创经验，专注电商CPS推广，淘客百万团队长
+                            </div>
+                            <div class="bio-line">
+                                社群营销，流量挖掘，项目指导，电商短视频工具服务商
+                            </div>
                         </div>
-                    </div>
-                    <div class="bio-dots">
-                        <span class="dot active"></span>
-                        <span class="dot"></span>
                     </div>
                 </div>
                 <div class="cta-buttons">
@@ -1056,7 +1095,7 @@
     </div>
 
     <!-- 音频元素 - 您指定的背景音乐 -->
-    <audio id="bgMusic" loop autoplay playsinline preload="auto">
+    <audio id="bgMusic" loop playsinline preload="auto">
         <!-- 优先使用您的音乐文件 -->
         <source src="518888.mp3" type="audio/mpeg">
         <!-- 备用音乐源 -->
@@ -1140,248 +1179,13 @@
             bgMusic.volume = 0.3;
         }
 
-        // 多种策略尝试自动播放
-        function attemptAutoplay() {
-            if (!bgMusic || isMusicPlaying) return;
-
-            console.log("🎵 尝试自动播放 518888.mp3...");
-
-            // 策略1：静音播放后再恢复音量
-            const originalVolume = bgMusic.volume;
-            bgMusic.volume = 0;
-
-            bgMusic.play().then(() => {
-                setTimeout(() => {
-                    bgMusic.volume = originalVolume;
-                    isMusicPlaying = true;
-                    if (musicToggle) {
-                        musicToggle.classList.add("playing");
-                        musicToggle.innerHTML = "<i class=\"fas fa-pause\"></i>";
-                    }
-                    console.log("✅ 策略1成功：518888.mp3 开始播放");
-                }, 100);
-            }).catch(() => {
-                bgMusic.volume = originalVolume;
-                console.log("策略1失败，尝试策略2...");
-
-                // 策略2：创建模拟用户交互
-                const fakeClick = new MouseEvent('click', {
-                    bubbles: true,
-                    cancelable: true,
-                    view: window
-                });
-
-                document.dispatchEvent(fakeClick);
-
-                bgMusic.play().then(() => {
-                    isMusicPlaying = true;
-                    if (musicToggle) {
-                        musicToggle.classList.add("playing");
-                        musicToggle.innerHTML = "<i class=\"fas fa-pause\"></i>";
-                    }
-                    console.log("✅ 策略2成功：518888.mp3 开始播放");
-                }).catch(() => {
-                    console.log("所有自动播放策略失败，等待用户交互");
-                    setupUserInteractionPlayback();
-                });
-            });
-        }
-
-        // 设置用户交互播放
-        function setupUserInteractionPlayback() {
-            const playOnFirstInteraction = (e) => {
-                if (!hasUserInteracted && !isMusicPlaying && bgMusic) {
-                    e.preventDefault();
-                    e.stopPropagation();
-
-                    bgMusic.play().then(() => {
-                        isMusicPlaying = true;
-                        hasUserInteracted = true;
-                        if (musicToggle) {
-                            musicToggle.classList.add("playing");
-                            musicToggle.innerHTML = "<i class=\"fas fa-pause\"></i>";
-                        }
-                        console.log("✅ 首次交互后 518888.mp3 开始播放");
-                        document.removeEventListener('click', playOnFirstInteraction, true);
-                        document.removeEventListener('keydown', playOnFirstInteraction, true);
-                        document.removeEventListener('touchstart', playOnFirstInteraction, true);
-                    }).catch(error => {
-                        console.error("播放失败:", error);
-                    });
-                }
-            };
-
-            // 监听多种用户交互事件
-            document.addEventListener('click', playOnFirstInteraction, true);
-            document.addEventListener('keydown', playOnFirstInteraction, true);
-            document.addEventListener('touchstart', playOnFirstInteraction, true);
-        }
-
-        // BIO文字轮播功能
-        class BioSlider {
-            constructor() {
-                this.slides = document.querySelectorAll('.bio-slide');
-                this.dots = document.querySelectorAll('.dot');
-                this.currentSlide = 0;
-                this.slideInterval = null;
-                this.isMobile = window.innerWidth <= 768;
-
-                if (this.slides.length === 0) return;
-
-                this.init();
-                this.bindEvents();
-            }
-
-            init() {
-                // 只在手机端启用轮播
-                if (this.isMobile && this.slides.length > 1) {
-                    this.showSlide(0);
-                    this.startAutoSlide();
-                } else {
-                    // 电脑端显示所有slides
-                    this.slides.forEach(slide => {
-                        slide.classList.add('active');
-                    });
-                }
-            }
-
-            bindEvents() {
-                // 响应窗口大小变化
-                window.addEventListener('resize', () => {
-                    const newIsMobile = window.innerWidth <= 768;
-                    if (newIsMobile !== this.isMobile) {
-                        this.isMobile = newIsMobile;
-                        this.init();
-                    }
-                });
-
-                // 点击圆点切换
-                this.dots.forEach((dot, index) => {
-                    dot.addEventListener('click', () => {
-                        if (this.isMobile) {
-                            this.showSlide(index);
-                            this.resetAutoSlide();
-                        }
-                    });
-                });
-
-                // 触摸滑动支持
-                let touchStartX = 0;
-                let touchEndX = 0;
-                const slider = document.querySelector('.bio-slider');
-
-                slider.addEventListener('touchstart', (e) => {
-                    touchStartX = e.changedTouches[0].screenX;
-                });
-
-                slider.addEventListener('touchend', (e) => {
-                    touchEndX = e.changedTouches[0].screenX;
-                    this.handleSwipe();
-                });
-
-                this.handleSwipe = () => {
-                    if (!this.isMobile) return;
-
-                    const swipeThreshold = 50;
-                    const diff = touchStartX - touchEndX;
-
-                    if (Math.abs(diff) > swipeThreshold) {
-                        if (diff > 0) {
-                            this.nextSlide(); // 向左滑动，下一张
-                        } else {
-                            this.prevSlide(); // 向右滑动，上一张
-                        }
-                        this.resetAutoSlide();
-                    }
-                };
-            }
-
-            showSlide(index) {
-                if (!this.isMobile) return;
-
-                // 移除所有active和prev类
-                this.slides.forEach((slide, i) => {
-                    slide.classList.remove('active', 'prev');
-                    this.dots[i].classList.remove('active');
-                });
-
-                // 设置当前slide为active
-                this.slides[index].classList.add('active');
-                this.dots[index].classList.add('active');
-
-                // 设置前一个slide为prev（用于动画）
-                const prevIndex = index === 0 ? this.slides.length - 1 : index - 1;
-                this.slides[prevIndex].classList.add('prev');
-
-                this.currentSlide = index;
-            }
-
-            nextSlide() {
-                const next = (this.currentSlide + 1) % this.slides.length;
-                this.showSlide(next);
-            }
-
-            prevSlide() {
-                const prev = this.currentSlide === 0 ? this.slides.length - 1 : this.currentSlide - 1;
-                this.showSlide(prev);
-            }
-
-            startAutoSlide() {
-                if (!this.isMobile) return;
-
-                this.slideInterval = setInterval(() => {
-                    this.nextSlide();
-                }, 4000); // 每4秒切换一次
-            }
-
-            stopAutoSlide() {
-                if (this.slideInterval) {
-                    clearInterval(this.slideInterval);
-                    this.slideInterval = null;
-                }
-            }
-
-            resetAutoSlide() {
-                this.stopAutoSlide();
-                this.startAutoSlide();
-            }
-        }
-
-        // 在多个时机尝试自动播放
-        document.addEventListener("DOMContentLoaded", function() {
-            // 初始化BIO轮播
-            new BioSlider();
-
-            setTimeout(attemptAutoplay, 500);
-        });
-
-        window.addEventListener("load", function() {
-            setTimeout(attemptAutoplay, 1000);
-        });
-
-        // 页面获得焦点时尝试播放
-        window.addEventListener("focus", function() {
-            setTimeout(attemptAutoplay, 500);
-        });
-
-        // 页面可见性变化时尝试播放
-        document.addEventListener("visibilitychange", function() {
-            if (!document.hidden && !isMusicPlaying) {
-                setTimeout(attemptAutoplay, 200);
-            }
-        });
-
-        // 鼠标进入页面时尝试播放
-        document.addEventListener("mouseenter", function() {
-            if (!isMusicPlaying) {
-                setTimeout(attemptAutoplay, 300);
-            }
-        });
+        // 音乐控制功能 - 仅手动播放
 
         function toggleMusic() {
             if (!bgMusic) return;
 
             hasUserInteracted = true;
+            const musicPlayer = document.querySelector('.music-player');
 
             if (isMusicPlaying) {
                 bgMusic.pause();
@@ -1389,12 +1193,18 @@
                     musicToggle.classList.remove("playing");
                     musicToggle.innerHTML = "<i class=\"fas fa-music\"></i>";
                 }
+                if (musicPlayer) {
+                    musicPlayer.classList.remove("playing");
+                }
                 console.log("⏸ 用户手动暂停音乐");
             } else {
                 bgMusic.play().then(() => {
                     if (musicToggle) {
                         musicToggle.classList.add("playing");
                         musicToggle.innerHTML = "<i class=\"fas fa-pause\"></i>";
+                    }
+                    if (musicPlayer) {
+                        musicPlayer.classList.add("playing");
                     }
                     console.log("▶️ 用户手动播放音乐");
                 }).catch(error => {
