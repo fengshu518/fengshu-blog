@@ -16,24 +16,24 @@
         }
 
         :root {
-            --primary-color: #60a5fa;
-            --secondary-color: #3b82f6;
-            --accent-color: #93c5fd;
-            --light-color: #dbeafe;
-            --ultra-light: #eff6ff;
-            --dark-color: #1e3a8a;
-            --text-color: #1e40af;
-            --card-bg: rgba(255, 255, 255, 0.95);
-            --contact-bg: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-            --business-gradient: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+            --primary-color: #ffffff;
+            --secondary-color: #e5e7eb;
+            --accent-color: #d1d5db;
+            --light-color: #9ca3af;
+            --ultra-light: #f3f4f6;
+            --dark-color: #111827;
+            --text-color: #f9fafb;
+            --card-bg: rgba(255, 255, 255, 0.12);
+            --contact-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
+            --business-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.12) 100%);
         }
 
         body {
             font-family: 'Noto Sans SC', sans-serif;
             line-height: 1.5;
-            color: var(--text-color);
+            color: var(--primary-color);
             overflow-x: hidden;
-            background: var(--ultra-light);
+            background: #000000;
         }
 
         .container {
@@ -49,7 +49,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--light-color) 0%, var(--accent-color) 100%);
+            background:
+                radial-gradient(ellipse at top left, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom right, rgba(255, 255, 255, 0.01) 0%, transparent 50%),
+                radial-gradient(ellipse at center, rgba(255, 255, 255, 0.01) 0%, transparent 60%),
+                linear-gradient(135deg, #0a0a0a 0%, #000000 50%, #050505 100%);
             z-index: -2;
         }
 
@@ -59,7 +63,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="a" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%2360a5fa;stop-opacity:0.3"/><stop offset="100%" style="stop-color:%233b82f6;stop-opacity:0.3"/></linearGradient></defs><circle cx="200" cy="200" r="150" fill="url(%23a)" opacity="0.4"><animate attributeName="cy" from="200" to="600" dur="10s" repeatCount="indefinite"/></circle><circle cx="1000" cy="100" r="100" fill="url(%23a)" opacity="0.3"><animate attributeName="cy" from="100" to="700" dur="12s" repeatCount="indefinite"/></circle><circle cx="600" cy="400" r="200" fill="url(%23a)" opacity="0.2"><animate attributeName="cy" from="400" to="200" dur="8s" repeatCount="indefinite"/></circle></svg>') no-repeat center center;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900"><defs><radialGradient id="a"><stop offset="0%" style="stop-color:%23ffffff;stop-opacity:0.08"/><stop offset="50%" style="stop-color:%23ffffff;stop-opacity:0.03"/><stop offset="100%" style="stop-color:%23ffffff;stop-opacity:0"/></radialGradient><filter id="b"><feGaussianBlur in="SourceGraphic" stdDeviation="2"/></filter></defs><g filter="url(%23b)"><circle cx="300" cy="200" r="120" fill="url(%23a)" opacity="0.4"><animateTransform attributeName="transform" type="translate" values="0,0; 50,-30; 0,0" dur="20s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.4;0.6;0.4" dur="8s" repeatCount="indefinite"/></circle><circle cx="1200" cy="150" r="80" fill="url(%23a)" opacity="0.3"><animateTransform attributeName="transform" type="translate" values="0,0; -30,50; 0,0" dur="25s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.3;0.5;0.3" dur="10s" repeatCount="indefinite"/></circle><circle cx="800" cy="400" r="150" fill="url(%23a)" opacity="0.2"><animateTransform attributeName="transform" type="translate" values="0,0; 40,40; -40,-40; 0,0" dur="30s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.2;0.4;0.2" dur="12s" repeatCount="indefinite"/></circle><circle cx="500" cy="600" r="100" fill="url(%23a)" opacity="0.25"><animateTransform attributeName="transform" type="translate" values="0,0; -60,-30; 60,30; 0,0" dur="22s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.25;0.45;0.25" dur="9s" repeatCount="indefinite"/></circle><circle cx="1400" cy="700" r="90" fill="url(%23a)" opacity="0.35"><animateTransform attributeName="transform" type="translate" values="0,0; 30,-60; -30,60; 0,0" dur="18s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.35;0.55;0.35" dur="11s" repeatCount="indefinite"/></circle></g></svg>') no-repeat center center;
             background-size: cover;
             z-index: -1;
             opacity: 0.6;
@@ -70,11 +74,12 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(15px);
             z-index: 1000;
             padding: 0.75rem 0;
-            box-shadow: 0 1px 10px rgba(37, 99, 235, 0.1);
+            box-shadow: 0 1px 20px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .nav-container {
@@ -86,7 +91,7 @@
         .logo {
             font-size: 1.2rem;
             font-weight: 700;
-            color: var(--dark-color);
+            color: var(--primary-color);
             text-decoration: none;
         }
 
@@ -97,7 +102,7 @@
         }
 
         .nav-links a {
-            color: var(--dark-color);
+            color: var(--secondary-color);
             text-decoration: none;
             font-weight: 500;
             font-size: 0.9rem;
@@ -174,75 +179,60 @@
             font-size: 2rem;
             margin-bottom: 0.5rem;
             font-weight: 700;
-            color: var(--dark-color);
+            color: var(--primary-color);
         }
 
         .hero .subtitle {
             font-size: 1.1rem;
             margin-bottom: 1rem;
-            color: var(--secondary-color);
+            color: var(--accent-color);
             font-weight: 500;
         }
 
-        .hero .bio-container {
+        .hero .bio {
+            font-size: 0.95rem;
             margin-bottom: 2rem;
+            color: var(--text-color);
+            line-height: 1.6;
             position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            overflow: hidden;
         }
 
-        .bio-scroll-wrapper {
+        /* 滚动文字容器 */
+        .bio-scroll-container {
             position: relative;
-            height: 50px;
+            width: 100%;
             overflow: hidden;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.05) 0%,
+                rgba(255, 255, 255, 0.02) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            padding: 1rem 2rem;
+            margin: 1.5rem 0;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            display: flex;
-            align-items: center;
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
         .bio-scroll-content {
-            display: none;
-            padding: 0 1rem;
+            display: flex;
+            animation: scrollText 12s linear infinite;
             white-space: nowrap;
-            font-size: 0.95rem;
-            color: var(--text-color);
-            line-height: 1.4;
-            animation: scrollLeft 15s linear infinite;
-            will-change: transform;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--primary-color);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1px;
         }
 
-        .bio-scroll-content:hover {
-            animation-play-state: paused;
+        .bio-scroll-text {
+            padding: 0 2rem;
+            position: relative;
         }
 
-        .bio-desktop-content {
-            display: none;
-            text-align: center;
-            padding: 0 1.5rem;
-            height: 50px;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            justify-content: space-around;
-        }
-
-        .bio-line {
-            font-size: 0.9rem;
-            color: var(--text-color);
-            line-height: 1.3;
-            margin: 0;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 100%;
-        }
-
-        @keyframes scrollLeft {
+        @keyframes scrollText {
             0% {
                 transform: translateX(0);
             }
@@ -251,38 +241,33 @@
             }
         }
 
-        /* 手机端：显示滚动文字 */
-        @media (max-width: 768px) {
-            .bio-scroll-content.bio-mobile {
-                display: inline-block;
-            }
+        .bio-scroll-container:hover .bio-scroll-content {
+            animation-play-state: paused;
         }
 
-        /* 电脑端：显示完整两行文字 */
-        @media (min-width: 769px) {
-            .bio-container {
-                max-width: 600px;
-            }
+        /* 聚焦光效 */
+        .bio-scroll-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.1) 50%,
+                transparent 100%);
+            animation: shimmerText 3s ease-in-out infinite;
+        }
 
-            .bio-scroll-wrapper {
-                height: 50px;
-                background: rgba(255, 255, 255, 0.05);
-                border: 1px solid rgba(255, 255, 255, 0.1);
-                padding: 0;
-                overflow: hidden;
+        @keyframes shimmerText {
+            0%, 100% {
+                left: -100%;
+                opacity: 0.3;
             }
-
-            .bio-desktop-content {
-                display: flex;
-            }
-
-            .bio-scroll-content.bio-mobile {
-                display: none;
-            }
-
-            .bio-line {
-                font-size: 0.85rem;
-                line-height: 1.2;
+            50% {
+                left: 100%;
+                opacity: 0.7;
             }
         }
 
@@ -309,26 +294,30 @@
         }
 
         .btn-primary {
-            background: var(--business-gradient);
-            color: white;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 100%);
+            color: var(--primary-color);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.25) 100%);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
         }
 
         .btn-secondary {
-            background: white;
+            background: transparent;
             color: var(--primary-color);
-            border: 2px solid var(--primary-color);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
         }
 
         .btn-secondary:hover {
-            background: var(--primary-color);
-            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--primary-color);
             transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.8);
         }
 
         /* 内容区块 */
@@ -361,97 +350,283 @@
 
         /* 联系方式 */
         .contact-section {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.1);
-            border: 1px solid var(--accent-color);
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.08) 0%,
+                rgba(255, 255, 255, 0.04) 100%);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 3rem 2rem;
+            margin-bottom: 3rem;
+            box-shadow:
+                0 25px 50px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.6) 20%,
+                rgba(255, 255, 255, 0.8) 50%,
+                rgba(255, 255, 255, 0.6) 80%,
+                transparent 100%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.3; transform: translateX(-20px); }
+            50% { opacity: 1; transform: translateX(20px); }
         }
 
         .contact-title {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: var(--dark-color);
+            font-size: 1.4rem;
+            margin-bottom: 1.8rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             font-weight: 700;
             text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 0.8rem;
+            position: relative;
+        }
+
+        .contact-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.8));
+            border-radius: 2px;
+            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
         }
 
         .contact-items {
             display: flex;
-            gap: 1rem;
+            gap: 0.8rem;
             justify-content: center;
-            flex-wrap: wrap;
+            align-items: stretch;
             margin-bottom: 1rem;
+            flex-wrap: nowrap;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .contact-tag {
-            background: white;
-            border: 2px solid var(--primary-color);
-            border-radius: 25px;
-            padding: 0.8rem 1.5rem;
+        .contact-card {
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.18) 0%,
+                rgba(255, 255, 255, 0.12) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 0.8rem 1rem;
+            text-align: left;
+            position: relative;
+            overflow: visible;
+            transition: all 0.3s ease;
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.15),
+                0 2px 8px rgba(0, 0, 0, 0.08);
+            flex: 1;
+            min-width: 280px;
+            max-width: 320px;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #60a5fa, #3b82f6);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow:
+                0 20px 40px rgba(37, 99, 235, 0.12),
+                0 8px 20px rgba(0, 0, 0, 0.08);
+            border-color: rgba(96, 165, 250, 0.5);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 0.4rem 0.6rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            justify-content: flex-start;
+            gap: 0.4rem;
             font-weight: 500;
-            color: var(--dark-color);
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.1);
-        }
-
-        .contact-tag:hover {
-            background: var(--primary-color);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
-        }
-
-        .contact-tag i {
+            font-size: 0.75rem;
             color: var(--primary-color);
-            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: visible;
+            white-space: nowrap;
+            line-height: 1.2;
+            min-height: 24px;
         }
 
-        .contact-tag:hover i {
-            color: white;
+        .contact-item .copyable {
+            overflow: visible;
+            flex: 1;
+            min-width: 0;
         }
 
-        .contact-tag .copyable {
+        .contact-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.15) 50%,
+                transparent 100%);
+            transition: left 0.8s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .contact-item:hover::before {
+            left: 100%;
+        }
+
+        .contact-item:hover {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.15));
+            color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .contact-item i {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            width: 14px;
+            text-align: center;
+        }
+
+        .contact-item:hover i {
+            color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        .contact-item .copyable {
             cursor: pointer;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
-        .contact-tag:hover .copyable {
+        .contact-item:hover .copyable {
             color: white;
+        }
+
+        .contact-item .copyable::after {
+            content: '复制';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.8rem;
+            color: var(--primary-color);
+            background: rgba(0, 0, 0, 0.98);
+            padding: 8px 16px;
+            border-radius: 8px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 9999;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+            pointer-events: none;
+            backdrop-filter: blur(15px);
+        }
+
+        .contact-item:hover .copyable::after {
+            opacity: 1;
+            visibility: visible;
         }
 
         .contact-hint {
             text-align: center;
-            margin-top: 0.8rem;
-            font-size: 0.8rem;
+            margin-top: 1rem;
+            padding: 0.6rem 1rem;
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(255, 255, 255, 0.06) 100%);
+            border-radius: 10px;
+            font-size: 0.75rem;
             color: var(--text-color);
-            font-style: italic;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .contact-hint i {
+            color: var(--accent-color);
+            font-size: 0.9rem;
         }
 
         /* 业务板块 */
         .business-section {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
+            gap: 2rem;
             margin-bottom: 2rem;
         }
 
         .business-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.12) 0%,
+                rgba(255, 255, 255, 0.06) 100%);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 2.5rem;
             text-align: center;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.3),
+                0 8px 25px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
         }
@@ -462,42 +637,100 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 3px;
+            background: linear-gradient(90deg,
+                rgba(255, 255, 255, 0.6) 0%,
+                rgba(255, 255, 255, 0.8) 50%,
+                rgba(255, 255, 255, 0.6) 100%);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
         }
 
-        .business-card.blue::before { background: linear-gradient(90deg, #3b82f6, #1e40af); }
-        .business-card.green::before { background: linear-gradient(90deg, #10b981, #047857); }
-        .business-card.orange::before { background: linear-gradient(90deg, #f59e0b, #d97706); }
-        .business-card.red::before { background: linear-gradient(90deg, #ef4444, #dc2626); }
+        .business-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.1) 50%,
+                transparent 100%);
+            transition: left 0.6s ease;
+            pointer-events: none;
+        }
+
+        .business-card:hover::after {
+            left: 100%;
+        }
 
         .business-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.4),
+                0 15px 40px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.3);
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.18) 0%,
+                rgba(255, 255, 255, 0.10) 100%);
         }
 
         .card-icon {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 1.5rem;
-            color: white;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.2) 0%,
+                rgba(255, 255, 255, 0.1) 100%);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .business-card.blue .card-icon { background: linear-gradient(135deg, #3b82f6, #1e40af); }
-        .business-card.green .card-icon { background: linear-gradient(135deg, #10b981, #047857); }
-        .business-card.orange .card-icon { background: linear-gradient(135deg, #f59e0b, #d97706); }
-        .business-card.red .card-icon { background: linear-gradient(135deg, #ef4444, #dc2626); }
+        .card-icon::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.3) 0%,
+                rgba(255, 255, 255, 0.1) 100%);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .business-card:hover .card-icon {
+            transform: scale(1.1) rotate(5deg);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow:
+                0 12px 35px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        .business-card:hover .card-icon::before {
+            opacity: 1;
+        }
 
         .business-card h3 {
-            font-size: 1.3rem;
-            color: #1e3a8a;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 1.8rem;
+            font-weight: 700;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         }
 
         .tag-grid {
@@ -507,19 +740,23 @@
         }
 
         .tag {
-            background: #f1f5f9;
-            color: #334155;
-            padding: 0.5rem 0.8rem;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--secondary-color);
+            padding: 0.6rem 1rem;
             border-radius: 12px;
             font-size: 0.8rem;
             font-weight: 500;
             transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .business-card.blue .tag:hover { background: #dbeafe; color: #1e40af; }
-        .business-card.green .tag:hover { background: #d1fae5; color: #065f46; }
-        .business-card.orange .tag:hover { background: #fed7aa; color: #92400e; }
-        .business-card.red .tag:hover { background: #fecaca; color: #991b1b; }
+        .tag:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--primary-color);
+            transform: translateY(-1px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
 
         /* 关于区块 */
         .about-section {
@@ -691,42 +928,10 @@
         }
 
         .music-toggle.playing {
-            background: rgba(59, 130, 246, 0.3);
-            border: 1px solid rgba(59, 130, 246, 0.5);
-            color: rgba(59, 130, 246, 1);
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: rgba(59, 130, 246, 0.8);
             animation: subtlePulse 3s ease-in-out infinite;
-        }
-
-        /* 播放提示 */
-        .music-player::after {
-            content: '点击播放';
-            position: absolute;
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 11px;
-            color: rgba(255, 255, 255, 0.6);
-            background: rgba(0, 0, 0, 0.7);
-            padding: 2px 8px;
-            border-radius: 10px;
-            white-space: nowrap;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-        }
-
-        .music-player:hover::after {
-            opacity: 1;
-        }
-
-        .music-toggle.playing + .music-player::after,
-        .music-player.playing::after {
-            content: '点击暂停';
-            opacity: 0;
-        }
-
-        .music-player.playing:hover::after {
-            opacity: 1;
         }
 
         .music-player:hover .music-toggle.playing {
@@ -834,19 +1039,79 @@
                 font-size: 1rem;
             }
 
-            .contact-items {
-                flex-direction: column;
-                gap: 0.6rem;
+            .bio-scroll-container {
+                margin: 1rem 0;
+                padding: 0.8rem 1rem;
+                border-radius: 30px;
             }
 
-            .contact-tag {
+            .bio-scroll-content {
+                font-size: 0.85rem;
+                animation-duration: 15s; /* 手机端稍慢一点，便于阅读 */
+                letter-spacing: 0.5px;
+            }
+
+            .bio-scroll-text {
+                padding: 0 1.5rem;
+            }
+
+            .contact-section {
+                padding: 2rem 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .contact-title {
+                font-size: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .contact-items {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .contact-card {
+                min-width: auto;
+                max-width: none;
                 width: 100%;
-                text-align: center;
+                padding: 0.6rem 0.8rem;
+            }
+
+            .contact-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .contact-type {
+                font-size: 1rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .contact-item {
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .contact-item i {
+                font-size: 1.1rem;
+            }
+
+            .contact-hint {
+                padding: 1rem;
+                font-size: 0.85rem;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .contact-hint i {
+                font-size: 1rem;
             }
 
             .business-section {
                 grid-template-columns: 1fr;
-                gap: 1rem;
+                gap: 1.5rem;
             }
 
             .stats-grid {
@@ -859,10 +1124,55 @@
                 padding: 2rem 1rem;
             }
 
+            /* 滚动文字在超小屏幕的优化 */
+            @media (max-width: 480px) {
+                .bio-scroll-container {
+                    margin: 0.8rem 0;
+                    padding: 0.6rem 0.8rem;
+                    border-radius: 25px;
+                }
+
+                .bio-scroll-content {
+                    font-size: 0.8rem;
+                    animation-duration: 18s; /* 超小屏幕更慢 */
+                }
+
+                .bio-scroll-text {
+                    padding: 0 1rem;
+                }
+            }
+
             .quick-btn {
                 width: 50px;
                 height: 50px;
                 font-size: 1.2rem;
+            }
+        }
+
+        /* 超小屏幕优化 */
+        @media (max-width: 480px) {
+            .contact-section {
+                padding: 1.5rem 1rem;
+            }
+
+            .contact-card {
+                padding: 1.2rem;
+            }
+
+            .contact-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+
+            .contact-item {
+                padding: 0.7rem 0.8rem;
+                font-size: 0.85rem;
+            }
+
+            .contact-hint {
+                font-size: 0.8rem;
+                padding: 0.8rem;
             }
         }
     </style>
@@ -897,19 +1207,10 @@
                 </div>
                 <h1>上海1943</h1>
                 <p class="subtitle">峰叔 | 资深互联网创业导师</p>
-                <div class="bio-container">
-                    <div class="bio-scroll-wrapper">
-                        <div class="bio-scroll-content bio-mobile">
-                            十三年网创经验，专注电商CPS推广，淘客百万团队长，社群营销，流量挖掘，项目指导，电商短视频工具服务商 · 十三年网创经验，专注电商CPS推广，淘客百万团队长，社群营销，流量挖掘，项目指导，电商短视频工具服务商
-                        </div>
-                        <div class="bio-desktop-content">
-                            <div class="bio-line">
-                                十三年网创经验，专注电商CPS推广，淘客百万团队长
-                            </div>
-                            <div class="bio-line">
-                                社群营销，流量挖掘，项目指导，电商短视频工具服务商
-                            </div>
-                        </div>
+                <div class="bio-scroll-container">
+                    <div class="bio-scroll-content">
+                        <div class="bio-scroll-text">十三年网创经验，专注电商CPS推广，淘客百万团队长，擅长社群营销流量挖掘，项目指导，短视频直播、电商工具以及周边服务商</div>
+                        <div class="bio-scroll-text">十三年网创经验，专注电商CPS推广，淘客百万团队长，擅长社群营销流量挖掘，项目指导，短视频直播、电商工具以及周边服务商</div>
                     </div>
                 </div>
                 <div class="cta-buttons">
@@ -930,27 +1231,55 @@
             <div class="contact-section fade-in">
                 <h2 class="contact-title">
                     <i class="fas fa-address-card"></i>
-                    联系方式
+                    联系
                 </h2>
                 <div class="contact-items">
-                    <div class="contact-tag">
-                        <i class="fab fa-weixin"></i>
-                        <span class="copyable" onclick="copyToClipboard('menpai6')">menpai6</span> /
-                        <span class="copyable" onclick="copyToClipboard('fengshukaopu')">fengshukaopu</span>
+                    <!-- 微信联系方式 -->
+                    <div class="contact-card">
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fab fa-weixin"></i>
+                                <span class="copyable" onclick="copyToClipboard('menpai6')">menpai6</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fab fa-weixin"></i>
+                                <span class="copyable" onclick="copyToClipboard('fengshukaopu')">fengshukaopu</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="contact-tag">
-                        <i class="fab fa-qq"></i>
-                        <span class="copyable" onclick="copyToClipboard('2627951816')">2627951816</span> /
-                        <span class="copyable" onclick="copyToClipboard('355283088')">355283088</span>
+
+                    <!-- QQ联系方式 -->
+                    <div class="contact-card">
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fab fa-qq"></i>
+                                <span class="copyable" onclick="copyToClipboard('2627951816')">2627951816</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fab fa-qq"></i>
+                                <span class="copyable" onclick="copyToClipboard('355283088')">355283088</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="contact-tag">
-                        <i class="fas fa-phone"></i>
-                        <span class="copyable" onclick="copyToClipboard('18051055361 / 18021318752')">18051055361 / 18021318752</span>
+
+                    <!-- 电话联系方式 -->
+                    <div class="contact-card">
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span class="copyable" onclick="copyToClipboard('18051055361')">18051055361</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span class="copyable" onclick="copyToClipboard('18021318752')">18021318752</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <p class="contact-hint">
-                    💡 点击即可复制，微信搜索添加，随时为您服务
-                </p>
+                <div class="contact-hint">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>点击复制 · 微信搜索</span>
+                </div>
             </div>
         </div>
     </section>
@@ -1046,7 +1375,7 @@
                     </p>
                     <div class="stats-grid">
                         <div class="stat-card">
-                            <div class="stat-number">1000+</div>
+                            <div class="stat-number">10000+</div>
                             <div class="stat-label">客户</div>
                         </div>
                         <div class="stat-card">
@@ -1095,7 +1424,7 @@
     </div>
 
     <!-- 音频元素 - 您指定的背景音乐 -->
-    <audio id="bgMusic" loop playsinline preload="auto">
+    <audio id="bgMusic" loop autoplay playsinline preload="auto">
         <!-- 优先使用您的音乐文件 -->
         <source src="518888.mp3" type="audio/mpeg">
         <!-- 备用音乐源 -->
@@ -1179,13 +1508,115 @@
             bgMusic.volume = 0.3;
         }
 
-        // 音乐控制功能 - 仅手动播放
+        // 多种策略尝试自动播放
+        function attemptAutoplay() {
+            if (!bgMusic || isMusicPlaying) return;
+
+            console.log("🎵 尝试自动播放 518888.mp3...");
+
+            // 策略1：静音播放后再恢复音量
+            const originalVolume = bgMusic.volume;
+            bgMusic.volume = 0;
+
+            bgMusic.play().then(() => {
+                setTimeout(() => {
+                    bgMusic.volume = originalVolume;
+                    isMusicPlaying = true;
+                    if (musicToggle) {
+                        musicToggle.classList.add("playing");
+                        musicToggle.innerHTML = "<i class=\"fas fa-pause\"></i>";
+                    }
+                    console.log("✅ 策略1成功：518888.mp3 开始播放");
+                }, 100);
+            }).catch(() => {
+                bgMusic.volume = originalVolume;
+                console.log("策略1失败，尝试策略2...");
+
+                // 策略2：创建模拟用户交互
+                const fakeClick = new MouseEvent('click', {
+                    bubbles: true,
+                    cancelable: true,
+                    view: window
+                });
+
+                document.dispatchEvent(fakeClick);
+
+                bgMusic.play().then(() => {
+                    isMusicPlaying = true;
+                    if (musicToggle) {
+                        musicToggle.classList.add("playing");
+                        musicToggle.innerHTML = "<i class=\"fas fa-pause\"></i>";
+                    }
+                    console.log("✅ 策略2成功：518888.mp3 开始播放");
+                }).catch(() => {
+                    console.log("所有自动播放策略失败，等待用户交互");
+                    setupUserInteractionPlayback();
+                });
+            });
+        }
+
+        // 设置用户交互播放
+        function setupUserInteractionPlayback() {
+            const playOnFirstInteraction = (e) => {
+                if (!hasUserInteracted && !isMusicPlaying && bgMusic) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    bgMusic.play().then(() => {
+                        isMusicPlaying = true;
+                        hasUserInteracted = true;
+                        if (musicToggle) {
+                            musicToggle.classList.add("playing");
+                            musicToggle.innerHTML = "<i class=\"fas fa-pause\"></i>";
+                        }
+                        console.log("✅ 首次交互后 518888.mp3 开始播放");
+                        document.removeEventListener('click', playOnFirstInteraction, true);
+                        document.removeEventListener('keydown', playOnFirstInteraction, true);
+                        document.removeEventListener('touchstart', playOnFirstInteraction, true);
+                    }).catch(error => {
+                        console.error("播放失败:", error);
+                    });
+                }
+            };
+
+            // 监听多种用户交互事件
+            document.addEventListener('click', playOnFirstInteraction, true);
+            document.addEventListener('keydown', playOnFirstInteraction, true);
+            document.addEventListener('touchstart', playOnFirstInteraction, true);
+        }
+
+        // 在多个时机尝试自动播放
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(attemptAutoplay, 500);
+        });
+
+        window.addEventListener("load", function() {
+            setTimeout(attemptAutoplay, 1000);
+        });
+
+        // 页面获得焦点时尝试播放
+        window.addEventListener("focus", function() {
+            setTimeout(attemptAutoplay, 500);
+        });
+
+        // 页面可见性变化时尝试播放
+        document.addEventListener("visibilitychange", function() {
+            if (!document.hidden && !isMusicPlaying) {
+                setTimeout(attemptAutoplay, 200);
+            }
+        });
+
+        // 鼠标进入页面时尝试播放
+        document.addEventListener("mouseenter", function() {
+            if (!isMusicPlaying) {
+                setTimeout(attemptAutoplay, 300);
+            }
+        });
 
         function toggleMusic() {
             if (!bgMusic) return;
 
             hasUserInteracted = true;
-            const musicPlayer = document.querySelector('.music-player');
 
             if (isMusicPlaying) {
                 bgMusic.pause();
@@ -1193,18 +1624,12 @@
                     musicToggle.classList.remove("playing");
                     musicToggle.innerHTML = "<i class=\"fas fa-music\"></i>";
                 }
-                if (musicPlayer) {
-                    musicPlayer.classList.remove("playing");
-                }
                 console.log("⏸ 用户手动暂停音乐");
             } else {
                 bgMusic.play().then(() => {
                     if (musicToggle) {
                         musicToggle.classList.add("playing");
                         musicToggle.innerHTML = "<i class=\"fas fa-pause\"></i>";
-                    }
-                    if (musicPlayer) {
-                        musicPlayer.classList.add("playing");
                     }
                     console.log("▶️ 用户手动播放音乐");
                 }).catch(error => {
